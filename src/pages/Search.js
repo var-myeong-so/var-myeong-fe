@@ -8,20 +8,29 @@ const Search = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const q = searchParams.get("q");
   const [searchInput, setSearchInput] = useState(q);
+  const [totalCount, setTotalCount] = useState(0);
+  let header = new Headers({
+    "Access-Control-Allow-origin": "*",
+  });
 
   const handleInputChange = (e) => {
     setSearchInput(e.target.value);
   };
 
-  // useEffect(() => {
-  //   if (searchInput !== q) {
-  //     console.log("Changed in search");
-  //     setSearchParams({ q: searchInput });
-  //   }
-  //   if (searchInput === "") {
-  //     setSearchParams({});
-  //   }
-  // }, [searchInput, q, setSearchParams]);
+  const getTotalCount = async () => {
+    const res = await fetch(
+      // `https://jsonplaceholder.typicode.com/comments?postId=${q}`
+      `http://183.100.1.179:8080/code/${q}`,
+      { headers: header }
+    ).then((res) => res.json());
+    // res.setHeader("Access-Control-Allow-origin", "http://183.100.1.179:8080");
+    console.log(res);
+    setTotalCount(res.length);
+  };
+
+  useEffect(() => {
+    getTotalCount();
+  }, [q]);
 
   return (
     <>
@@ -36,15 +45,13 @@ const Search = () => {
           <SearchSideLayout />
           <div className="search-main-layout">
             <div className="search-main-header">
-              <div class="search-page-info">
-                Showing <strong>1 - 10</strong> out of <strong>995,195</strong>{" "}
-                results
+              <div className="search-page-info">
+                Showing <strong>1 - 10</strong> out of{" "}
+                <strong>{totalCount}</strong> results
               </div>
             </div>
             <div className="search-main-body">
               <ul className="search-result-container">
-                <SearchMainResult />
-                <SearchMainResult />
                 <SearchMainResult />
                 <SearchMainResult />
                 <SearchMainResult />

@@ -1,12 +1,12 @@
 const SearchMainResult = () => {
   return (
-    <li class="search-result">
-      <div class="search-result-header">
-        <div class="search-result-title">
-          <div class="result-repo">
+    <li className="search-result">
+      <div className="search-result-header">
+        <div className="search-result-title">
+          <div className="result-repo">
             <a href="https://github.com/golang/go">
               <img
-                class="repo-avatar"
+                className="repo-avatar"
                 src="https://avatars.githubusercontent.com/u/4314092?s=60&amp;v=4"
                 alt=""
                 width="20"
@@ -15,10 +15,10 @@ const SearchMainResult = () => {
               golang/go
             </a>
           </div>
-          <div class="result-file-info">
-            <div class="result-file">
+          <div className="result-file-info">
+            <div className="result-file">
               <a href="https://github.com/golang/go/blob/master/src/crypto/tls/handshake_client.go">
-                <span class="result-file-directory">
+                <span className="result-file-directory">
                   src/
                   <wbr />
                   crypto/
@@ -26,49 +26,49 @@ const SearchMainResult = () => {
                   tls/
                   <wbr />
                 </span>
-                <span class="result-file-name">handshake_client.go</span>
+                <span className="result-file-name">handshake_client.go</span>
               </a>
             </div>
-            <div class="result-total-matches">100+ matches</div>
+            <div className="result-total-matches">100+ matches</div>
           </div>
         </div>
       </div>
-      <div class="search-result-body">
-        <div class="search-result-numbers-mask"></div>
-        <div class="search-result-background"></div>
-        <div class="search-result-details">
-          <table class="highlight-table">
+      <div className="search-result-body">
+        <div className="search-result-numbers-mask"></div>
+        <div className="search-result-background"></div>
+        <div className="search-result-details">
+          <table className="highlight-table">
             <tbody>
               <tr data-line="28">
                 <td>
-                  <div class="lineno">28</div>
+                  <div className="lineno">28</div>
                 </td>
                 <td>
-                  <div class="highlight">
+                  <div className="highlight">
                     <pre>
                       {"    "}
-                      <span class="nx">ctx</span>
+                      <span className="nx">ctx</span>
                       {"          "}
-                      <span class="nx">context</span>
-                      <span class="p">.</span>
-                      <span class="nx">Context</span>
+                      <span className="nx">context</span>
+                      <span className="p">.</span>
+                      <span className="nx">Context</span>
                     </pre>
                   </div>
                 </td>
               </tr>
               <tr data-line="29">
                 <td>
-                  <div class="lineno">29</div>
+                  <div className="lineno">29</div>
                 </td>
                 <td>
-                  <div class="highlight">
+                  <div className="highlight">
                     <pre>
                       {" "}
-                      <span class="nx">
+                      <span className="nx">
                         server<mark>Hello</mark>
                       </span>{" "}
-                      <span class="o">*</span>
-                      <span class="nx">
+                      <span className="o">*</span>
+                      <span className="nx">
                         server<mark>Hello</mark>Msg
                       </span>
                     </pre>
@@ -77,17 +77,17 @@ const SearchMainResult = () => {
               </tr>
               <tr data-line="30">
                 <td>
-                  <div class="lineno">30</div>
+                  <div className="lineno">30</div>
                 </td>
                 <td>
-                  <div class="highlight">
+                  <div className="highlight">
                     <pre>
                       {" "}
-                      <span class="nx">
+                      <span className="nx">
                         <mark>hello</mark>
                       </span>{" "}
-                      <span class="o">*</span>
-                      <span class="nx">
+                      <span className="o">*</span>
+                      <span className="nx">
                         client<mark>Hello</mark>Msg
                       </span>
                     </pre>
@@ -96,58 +96,63 @@ const SearchMainResult = () => {
               </tr>
               <tr data-line="31">
                 <td>
-                  <div class="lineno">31</div>
+                  <div className="lineno">31</div>
                 </td>
                 <td>
-                  <div class="highlight">
+                  <div className="highlight">
                     <pre>
                       {" "}
-                      <span class="nx">suite</span> <span class="o">*</span>
-                      <span class="nx">cipherSuite</span>
+                      <span className="nx">suite</span>{" "}
+                      <span className="o">*</span>
+                      <span className="nx">cipherSuite</span>
                     </pre>
-                    <div class="jump"></div>
+                    <div className="jump"></div>
                   </div>
                 </td>
               </tr>
               <tr data-line="37">
                 <td>
-                  <div class="lineno">37</div>
+                  <div className="lineno">37</div>
                 </td>
                 <td>
-                  <div class="highlight">
+                  <div className="highlight">
                     <pre>
-                      <span class="kd">func</span> <span class="p">(</span>
-                      <span class="nx">c</span> <span class="o">*</span>
-                      <span class="nx">Conn</span>
-                      <span class="p">)</span>{" "}
-                      <span class="nx">
+                      <span className="kd">func</span>{" "}
+                      <span className="p">(</span>
+                      <span className="nx">c</span> <span className="o">*</span>
+                      <span className="nx">Conn</span>
+                      <span className="p">)</span>{" "}
+                      <span className="nx">
                         makeClient<mark>Hello</mark>
                       </span>
-                      <span class="p">()</span> <span class="p">(</span>
-                      <span class="o">*</span>
-                      <span class="nx">
+                      <span className="p">()</span> <span className="p">(</span>
+                      <span className="o">*</span>
+                      <span className="nx">
                         client<mark>Hello</mark>Msg
                       </span>
-                      <span class="p">,</span>{" "}
-                      <span class="nx">ecdheParameters</span>
-                      <span class="p">,</span> <span class="kt">error</span>
-                      <span class="p">)</span> <span class="p">{"{"}</span>
+                      <span className="p">,</span>{" "}
+                      <span className="nx">ecdheParameters</span>
+                      <span className="p">,</span>{" "}
+                      <span className="kt">error</span>
+                      <span className="p">)</span>{" "}
+                      <span className="p">{"{"}</span>
                     </pre>
                   </div>
                 </td>
               </tr>
               <tr data-line="38">
                 <td>
-                  <div class="lineno">38</div>
+                  <div className="lineno">38</div>
                 </td>
                 <td>
-                  <div class="highlight">
+                  <div className="highlight">
                     <pre>
                       {" "}
-                      <span class="nx">config</span> <span class="o">:=</span>{" "}
-                      <span class="nx">c</span>
-                      <span class="p">.</span>
-                      <span class="nx">config</span>
+                      <span className="nx">config</span>{" "}
+                      <span className="o">:=</span>{" "}
+                      <span className="nx">c</span>
+                      <span className="p">.</span>
+                      <span className="nx">config</span>
                     </pre>
                   </div>
                 </td>

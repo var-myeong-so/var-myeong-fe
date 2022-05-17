@@ -76,6 +76,10 @@
   /* border: 1px solid red; */
 }
 
+.search-field + .search-field {
+  margin-top: 32px;
+}
+
 .search-main-layout {
   width: 76%;
   padding: 32px 0 32px 32px;
@@ -221,6 +225,23 @@
 
 .search-main-header {
   padding: 0 0 20px 22px;
+}
+
+.search-page-words-wrapper {
+  display: flex;
+  margin-bottom: 25px;
+}
+
+.search-page-words {
+  margin-right: 50px;
+}
+
+.search-page-words button {
+  padding: 3px 15px;
+  border-radius: 30px;
+  border: 1px solid #888;
+  background-color: white;
+  color: #424242;
 }
 
 .search-page-info {
