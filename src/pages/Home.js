@@ -24,7 +24,7 @@ const Home = () => {
 
   return (
     <>
-      <div className="site-title">var myeong</div>
+      <div className="site-title">myeong</div>
       <div className="sub-title">Search across a half million git repos</div>
       <div>
         {/* <form method="get" action="/search"> */}
