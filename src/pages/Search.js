@@ -20,7 +20,7 @@ const Search = () => {
   const getTotalCount = async () => {
     const res = await fetch(
       // `https://jsonplaceholder.typicode.com/comments?postId=${q}`
-      `https://www.ecsimsw.com:8080/code/${q}`,
+      `http://www.ecsimsw.com:8080/code/${q}`,
       { headers: header }
     ).then((res) => res.json());
     // res.setHeader("Access-Control-Allow-origin", "http://183.100.1.179:8080");
