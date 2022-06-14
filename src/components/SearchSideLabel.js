@@ -37,7 +37,7 @@ const SearchSideLabel = ({ filter, filterCount, id }) => {
       <div className="search-lang-input-wrapper">
         <label className="search-checkbox-wrapper" onChange={isChecked}>
           <span className="search-checkbox">
-            <input type="checkbox" className="search-checkbox-input" value="" />
+            <input type="radio" className="search-checkbox-input" value="" />
           </span>
           <span className="search-lang-value-wrapper">
             <span className="search-lang-value">{filter}</span>

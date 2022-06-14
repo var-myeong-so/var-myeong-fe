@@ -445,3 +445,8 @@ footer {
   cursor: pointer;
   height: unset;
 }
+
+mark {
+  background-color: #ffe58f;
+  padding: 0;
+}
