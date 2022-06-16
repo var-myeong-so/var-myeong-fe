@@ -1,7 +1,3 @@
-// import { useEffect, useState } from "react";
-// import { useSearchParams } from "react-router-dom";
-// import SearchSideLabel from "./SearchSideLabel";
-
 import { useEffect } from "react";
 
 const SearchSideLayout = ({
@@ -11,46 +7,59 @@ const SearchSideLayout = ({
   searchWord,
   currentUrl,
   changeUrl,
+  changeTotalCount,
 }) => {
-  // const [searchParams, setSearchParams] = useSearchParams();
-  // const q = searchParams.get("q");
-  // const [classCount, setClassCount] = useState(0);
-  // const [wordCount, setWordCount] = useState(0);
-  // const [variableCount, setVariableCount] = useState(0);
-
-  // const getFilterCount = async () => {
-  //   const classCountRes = await fetch(
-  //     `http://www.ecsimsw.com:8080/code/count/class/${q}`
-  //   ).then((classCountRes) => classCountRes.text());
-  //   const variableCountRes = await fetch(
-  //     `http://www.ecsimsw.com:8080/code/count/variable/${q}`
-  //   ).then((variableCountRes) => variableCountRes.text());
-  //   const wordCountRes = await fetch(
-  //     `http://www.ecsimsw.com:8080/code/count/${q}`
-  //   ).then((wordCountRes) => wordCountRes.text());
-  //   console.log(classCountRes, variableCountRes, wordCountRes);
-  //   setClassCount(classCountRes);
-  //   setVariableCount(variableCountRes);
-  //   setWordCount(wordCountRes);
-  // };
-
   const checkOnlyOne = (checkThis, filter) => {
-    console.log(searchWord);
+    const temp2 = "http://www.ecsimsw.com:8080";
     const checkboxes = document.getElementsByName("filter");
     for (let i = 0; i < checkboxes.length; i++) {
       if (checkboxes[i] !== checkThis) {
         checkboxes[i].checked = false;
       } else {
-        if (filter === "word" || checkboxes[i].checked == false) {
-          changeUrl(`http://www.ecsimsw.com:8080/code/${searchWord}`);
+        if (filter === "word" || checkboxes[i].checked === false) {
+          changeUrl(temp2 + `/code/${searchWord}`);
+          changeTotalCount(wordCount);
         } else {
-          changeUrl(`http://www.ecsimsw.com:8080/code/${filter}/${searchWord}`);
+          if (filter === "class") {
+            changeTotalCount(classCount);
+          } else {
+            changeTotalCount(variableCount);
+          }
+          changeUrl(temp2 + `/code/${filter}/${searchWord}`);
         }
       }
     }
-    // if (flag === 3) {
-    //   changeUrl(`http://www.ecsimsw.com:8080/code/${searchWord}`);
-    // }
+  };
+
+  const handleTotalCount = async () => {
+    let flag = 0;
+    const temp2 = "http://www.ecsimsw.com:8080";
+    const classCountRes = await fetch(
+      temp2 + `/code/count/class/${searchWord}`
+    ).then((classCountRes) => classCountRes.text());
+    const variableCountRes = await fetch(
+      temp2 + `/code/count/variable/${searchWord}`
+    ).then((variableCountRes) => variableCountRes.text());
+    const wordCountRes = await fetch(temp2 + `/code/count/${searchWord}`).then(
+      (wordCountRes) => wordCountRes.text()
+    );
+    const checkboxes = document.getElementsByName("filter");
+    for (let i = 0; i < checkboxes.length; i++) {
+      if (checkboxes[i].checked === true) {
+        if (checkboxes[i].value === "class") {
+          changeTotalCount(classCountRes);
+        } else if (checkboxes[i].value === "variable") {
+          changeTotalCount(variableCountRes);
+        } else {
+          changeTotalCount(wordCountRes);
+        }
+      } else {
+        flag = flag + 1;
+      }
+    }
+    if (flag === 3) {
+      changeTotalCount(wordCountRes);
+    }
   };
 
   useEffect(() => {
@@ -58,6 +67,7 @@ const SearchSideLayout = ({
     temp.pop();
     temp.push(searchWord);
     changeUrl(temp.join("/"));
+    handleTotalCount();
   }, [searchWord]);
 
   return (
@@ -74,7 +84,7 @@ const SearchSideLayout = ({
                       name="filter"
                       type="checkbox"
                       className="search-checkbox-input"
-                      value=""
+                      value="class"
                       onChange={(e) => checkOnlyOne(e.target, "class")}
                     />
                   </span>
@@ -93,7 +103,7 @@ const SearchSideLayout = ({
                       name="filter"
                       type="checkbox"
                       className="search-checkbox-input"
-                      value=""
+                      value="variable"
                       onChange={(e) => checkOnlyOne(e.target, "variable")}
                     />
                   </span>
@@ -112,7 +122,7 @@ const SearchSideLayout = ({
                       name="filter"
                       type="checkbox"
                       className="search-checkbox-input"
-                      value=""
+                      value="word"
                       onChange={(e) => checkOnlyOne(e.target, "word")}
                     />
                   </span>

@@ -1,7 +1,6 @@
 import SearchMainCode from "./SearchMainCode";
 
 const SearchMainResult = ({ itemList, searchWord }) => {
-  // console.log(itemList);
   const resultPath = itemList.path.split("/");
   const resultRepo = [resultPath[3], resultPath[4]].join("/");
   const resultRepoLink = resultPath.splice(0, 5).join("/");
@@ -9,11 +8,8 @@ const SearchMainResult = ({ itemList, searchWord }) => {
   resultPath.shift();
   resultPath.shift();
   const resultFileDir = resultPath.join("/");
-
   const resultCode = itemList.codeLines.split("\n");
   resultCode.pop();
-  // console.log(resultCode);
-
   return (
     <li className="search-result">
       <div className="search-result-header">
@@ -37,7 +33,6 @@ const SearchMainResult = ({ itemList, searchWord }) => {
                 <span className="result-file-name">{resultFileName}</span>
               </a>
             </div>
-            {/* <div className="result-total-matches">100+ matches</div> */}
           </div>
         </div>
       </div>

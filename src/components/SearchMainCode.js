@@ -2,12 +2,7 @@ const SearchMainCode = ({ code, searchWord }) => {
   if (code === "") {
     code = "\n";
   }
-  let temp = code.split(searchWord);
-  if (code.includes(searchWord)) {
-    // temp = code.split(searchWord);
-    temp.splice(1, 0, searchWord);
-    // console.log(temp);
-  }
+  let parts = code.split(new RegExp(`(${searchWord})`, "gi"));
   return (
     <tr data-line="">
       <td>
@@ -17,8 +12,12 @@ const SearchMainCode = ({ code, searchWord }) => {
         <div className="highlight">
           <pre>
             <span>
-              {temp.map((temp, index) =>
-                index === 1 ? <mark key={index}>{temp}</mark> : temp
+              {parts.map((part, index) =>
+                part.toLowerCase() === searchWord.toLowerCase() ? (
+                  <mark key={index}>{part}</mark>
+                ) : (
+                  part
+                )
               )}
             </span>
           </pre>

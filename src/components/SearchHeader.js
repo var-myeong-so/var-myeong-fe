@@ -22,7 +22,6 @@ const SearchHeader = ({ searchInput, handleInputChange }) => {
       <div className="site-name">
         <Link to={"/"}>var myeong</Link>
       </div>
-      {/* <form method="get" action="/search"> */}
       <div className="input-group input-group2 mx-auto">
         <input
           type="text"
@@ -38,7 +37,6 @@ const SearchHeader = ({ searchInput, handleInputChange }) => {
           aria-describedby="button-addon2"
         />
       </div>
-      {/* </form> */}
     </div>
   );
 };

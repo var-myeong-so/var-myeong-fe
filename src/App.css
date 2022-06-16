@@ -450,3 +450,7 @@ mark {
   background-color: #ffe58f;
   padding: 0;
 }
+
+.search-pagination {
+  margin-top: 20px;
+}

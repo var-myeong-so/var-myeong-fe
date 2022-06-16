@@ -15,7 +15,6 @@ const Home = () => {
       let keyword = e.target.value;
       if (keyword.length < 1) {
         inputRef.current.focus();
-        console.log("No content");
         return;
       }
       navigate(`/search?q=${keyword}`);
@@ -27,7 +26,6 @@ const Home = () => {
       <div className="site-title">var myeong</div>
       <div className="sub-title">Search across a half million git repos</div>
       <div>
-        {/* <form method="get" action="/search"> */}
         <div className="input-group input-group2 mx-auto mt-3 mb-3">
           <input
             type="text"
@@ -43,7 +41,6 @@ const Home = () => {
             aria-describedby="button-addon2"
           />
         </div>
-        {/* </form> */}
       </div>
     </>
   );
