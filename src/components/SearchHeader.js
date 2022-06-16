@@ -1,8 +1,15 @@
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
-const SearchHeader = ({ searchInput, handleInputChange }) => {
+const SearchHeader = ({
+  searchInput,
+  searchWord,
+  filter,
+  handleInputChange,
+  QueryInputChange,
+}) => {
   const navigate = useNavigate();
+  const [value, setValue] = useState(searchInput);
   const inputRef = useRef();
 
   const search = (e) => {
@@ -13,9 +20,17 @@ const SearchHeader = ({ searchInput, handleInputChange }) => {
         console.log("No content");
         return;
       }
-      navigate(`/search?q=${keyword}`);
+      if (filter === null) {
+        navigate(`/search?q=${keyword}`);
+      } else {
+        navigate(`/search?q=${keyword}&filter=${filter}`);
+      }
     }
   };
+
+  useEffect(() => {
+    QueryInputChange(searchWord);
+  }, [searchWord]);
 
   return (
     <div className="search-header">

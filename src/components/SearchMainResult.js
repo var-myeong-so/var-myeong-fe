@@ -10,6 +10,7 @@ const SearchMainResult = ({ itemList, searchWord }) => {
   const resultFileDir = resultPath.join("/");
   const resultCode = itemList.codeLines.split("\n");
   resultCode.pop();
+  //"https://avatars.githubusercontent.com/u/4314092?s=60&amp;v=4"
   return (
     <li className="search-result">
       <div className="search-result-header">
@@ -18,7 +19,7 @@ const SearchMainResult = ({ itemList, searchWord }) => {
             <a href={resultRepoLink} target="_blank" rel="noreferrer">
               <img
                 className="repo-avatar"
-                src="https://avatars.githubusercontent.com/u/4314092?s=60&amp;v=4"
+                src="https://i.pinimg.com/280x280_RS/95/f7/e8/95f7e8cc49bdfc8ef7f39e4b280017f8.jpg"
                 alt=""
                 width="20"
                 height="20"

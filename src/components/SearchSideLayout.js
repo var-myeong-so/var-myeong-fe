@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 const SearchSideLayout = ({
   classCount,
@@ -9,6 +10,7 @@ const SearchSideLayout = ({
   changeUrl,
   changeTotalCount,
 }) => {
+  const navigate = useNavigate();
   const checkOnlyOne = (checkThis, filter) => {
     const temp2 = "http://www.ecsimsw.com:8080";
     const checkboxes = document.getElementsByName("filter");
@@ -19,11 +21,14 @@ const SearchSideLayout = ({
         if (filter === "word" || checkboxes[i].checked === false) {
           changeUrl(temp2 + `/code/${searchWord}`);
           changeTotalCount(wordCount);
+          navigate(`/search?q=${searchWord}`);
         } else {
           if (filter === "class") {
             changeTotalCount(classCount);
-          } else {
+            navigate(`/search?q=${searchWord}&filter=Class`);
+          } else if (filter === "variable") {
             changeTotalCount(variableCount);
+            navigate(`/search?q=${searchWord}&filter=Variable`);
           }
           changeUrl(temp2 + `/code/${filter}/${searchWord}`);
         }
